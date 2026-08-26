@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ORVEX - Products</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">🛒 Cart (<span id="cartCount">0</span>)</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <header>ORVEX Collection</header>
+  <div class="container">
+    <div class="card">
+      <img src="watch1.jpg" alt="ORVEX Classic">
+      <h3>ORVEX Classic</h3>
+      <p>$250</p>
+      <button onclick="addToCart('ORVEX Classic', 250)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="watch2.jpg" alt="ORVEX Elegance">
+      <h3>ORVEX Elegance</h3>
+      <p>$320</p>
+      <button onclick="addToCart('ORVEX Elegance', 320)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="watch3.jpg" alt="ORVEX Sport">
+      <h3>ORVEX Sport</h3>
+      <p>$280</p>
+      <button onclick="addToCart('ORVEX Sport', 280)">Add to Cart</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 ORVEX. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function addToCart(productName, price) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({name: productName, price: price});
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(productName + " added to cart!");
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById("cartCount").textContent = cart.length;
+    }
+    updateCartCount();
+  </script>
+</body>
+</html>
